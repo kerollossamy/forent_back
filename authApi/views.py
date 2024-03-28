@@ -6,10 +6,6 @@ from for_rent import settings
 from users_api.models import User
 from users_api.serializers import UserSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from rest_framework_simplejwt.authentication import JWTAuthentication
 from .models import UserEmailVerification
 
 
@@ -50,8 +46,8 @@ class LoginView(APIView):
             "username": user.username,
             "email": user.email,
             "phoneNumber": str(user.phone_number),
-            "profilePicture": user.get_profile_picture_url(),
             "role": user.role,
+            "profile_picture": str(serializer.data['profile_picture']),
             "registration_date": str(user.registration_date),
             "validation_states": user.validation_states,
         }
