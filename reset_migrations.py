@@ -3,9 +3,9 @@ import shutil
 
 def delete_folders_and_files(root_folder, folders_to_delete, files_to_delete):
     for foldername, subfolders, filenames in os.walk(root_folder):
-        # Exclude .venv folder from traversal
-        if '.venv' in subfolders:
-            subfolders.remove('.venv')
+        # Exclude venv folder from traversal
+        if 'venv' in subfolders:
+            subfolders.remove('venv')
         
         for folder_to_delete in folders_to_delete:
             if folder_to_delete in subfolders:
